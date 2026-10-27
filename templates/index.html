@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!-- this is how u do notes in html -->
+<!-- setting to html doc -->
+<html> 
+<!-- everything bw this and the end one is the website -->
+<head>
+<!-- info that is not directly on the page -->
+<!-- header -->
+    <title>Jack's Landslide Data Practicum</title>
+
+<style>
+        body {
+            background-color: #b0bc45;
+            text-align: center;
+            font-family: "Trebuchet MS", sans-serif;
+        }
+
+        h1 {
+            color: black;
+            font-size: 40px;
+        }
+
+        p {
+            color: black;
+            font-size: 20px;
+        }
+
+        img {
+            width: 500px;
+            border: 5px solid black;
+            border-radius: 15px;
+            box-shadow: 12px 13px 5px 0px rgba(0,0,0,0.75);
+            -webkit-box-shadow: 12px 13px 5px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 12px 13px 5px 0px rgba(0,0,0,0.75);
+        }
+.text-bubble {
+    background-color: #f4f1e6;
+    padding: 25px;
+    margin: 20px 40px;
+    border-radius: 15px;
+    color: #283b2b;
+    font-size: 20px;
+    line-height: 1.6;
+    text-align: left;
+    border: 2px solid #283b2b;
+}
+button {
+   background-color: lightgreen;
+   transition .3s ease all;
+}
+button:hover {
+   background-color: skyblue;
+   transition: .3s ease all;
+}
+.spinning-image {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    display: block;
+    margin: 30px auto;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    animation: spin 2s linear infinite;
+    box-shadow: none;
+    filter: none;
+    outline: none;
+    transition: transform 0.3s;
+}
+.spinning-image:hover {
+    animation-duration: 0.3s;
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+    </style>
+
+</head>
+
+<body>
+<!-- stuff actually on the webpage h1 is heading one the biggest one and p is paragraph the text-->
+    <h1>Landslide Data Practicum</h1>
+    <p>by Jack Turner</p>
+
+    <img src="{{ url_for('static', filename='landslide.jpg') }}" alt="My Image" width="400">
+<!-- image insertion -->
+<p class="text-bubble">
+    A landslide is the downslope movement of rock, soil, or debris 
+caused when gravity overcomes the strength holding slope materials in place.
+They can be caused by heavy rainfall, earthquakes, volcanic activity, erosion,
+or human activity. This project aims to find areas where landfalls are most common, 
+which have been the deadliest in human history, and how much news coverage these events receive.
+Other interesting questions and topics will also be explored! (This is a placeholder). 
+</p>
+<p class="text-bubble">
+Here is another bubble to show my cool class!
+</p>
+<button onclick="showMessage()">Click me!</button>
+
+<p id="message"></p>
+
+<script>
+    async function showMessage() {
+        const response = await fetch("/message");
+        const text = await response.text();
+
+        document.getElementById("message").textContent = text;
+    }
+</script>
+<!-- first javascript. gives a paragraph of 'message'
+which is over in our python code. makes a function that fetches our 
+message and turns it into text. finds the html element with ID message
+and sets the text to the message from Flask -->
+<p class="text-bubble">
+Look a spinning ball that accelerates on mouse touch!
+</p>
+<!-- flask template syntax called Jinja. turns this line into a 
+url that is used to request the image from Flask. Alt is for 
+if the image does not load.  Tells Flask to get the image from 
+static folder and which image to find. Flask needs correct path
+to find our images and this is how.
+ -->
+<img src="{{ url_for('static', filename='ballReal.png') }}" alt="Spinning image" class="spinning-image">
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<!-- this is how u do notes in html -->
+<!-- setting to html doc -->
+<html> 
+<!-- everything bw this and the end one is the website -->
+<head>
+<!-- info that is not directly on the page -->
+<!-- header -->
+    <title>Jack's Landslide Data Practicum</title>
+</head>
+<body>
+<!-- stuff actually on the webpage h1 is heading one the biggest one and p is paragraph the text-->
+    <h1>Jack Turner</h1>
+    <p>hello hello web page test</p>
+
+    <img src="smiley.jpeg" alt="My Image" width="400">
+<!-- image insertion -->
+</body>
+</html>
